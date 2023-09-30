@@ -16,11 +16,13 @@
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@typescript-eslint/eslint-plugin": "^6.7.3",
     "@typescript-eslint/parser": "^6.7.3",
+    "clsx": "^2.0.0",
     "cross-env": "^7.0.3",
     "eslint": "latest",
     "eslint-config-next": "latest",
