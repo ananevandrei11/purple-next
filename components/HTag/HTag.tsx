@@ -10,7 +10,7 @@ export const HTag = ({
 }: HTagProps): JSX.Element => {
   const Component = tag;
   return (
-    <Component className={clsx(styles.tag, styles[tag], className)} {...props}>
+    <Component className={clsx(styles[tag], className)} {...props}>
       {children}
     </Component>
   );

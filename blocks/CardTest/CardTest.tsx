@@ -19,19 +19,19 @@ export const CardTest = ({
   className,
 }: CardTestProps) => (
   <div className={clsx(styles.card, className)}>
-    <figure className={styles.figure}>
-      <Image
-        src={img.src}
-        placeholder="blur"
-        blurDataURL={img?.blurDataURL}
-        fill={true}
-        priority={false}
-        alt={title}
-        quality={75}
-        objectFit="contain"
-        objectPosition="center"
-      />
-    </figure>
+    <Image
+      src={img.src}
+      placeholder="blur"
+      blurDataURL={img?.blurDataURL}
+      width={img?.width}
+      height={img?.height}
+      priority={false}
+      alt={title}
+      quality={75}
+      objectFit="contain"
+      objectPosition="center"
+      className={styles.img}
+    />
     <article>
       <div className={styles.info}>
         <p className={styles.infoTheme}>{theme}</p>
