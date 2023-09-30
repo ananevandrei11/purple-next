@@ -21,8 +21,12 @@ a {
   --black: #3b434e;
   --white: #fff;
   --primary: #7653fc;
+  --primary-hover: #5c3ed3;
   --red: #fc836d;
+  --red-strong: #de0000;
   --green: #1dc37e;
   --green-light: #c8f8e4;
+  --grey-light: #ebebeb;
+  --grey-strong: #b3c0d9;
   --ff: 'Noto Sans KR', sans-serif;
 }

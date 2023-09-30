@@ -1,11 +1,16 @@
-import React from 'react';
-
+import clsx from 'clsx';
 import styles from './Button.module.css';
+import { ButtonProps } from './Button.props';
 
-export interface ButtonProps {
-  prop?: string;
-}
-
-export function Button({ prop = 'default value' }: ButtonProps) {
-  return <div className={styles.Button}>Button {prop}</div>;
-}
+export const Button = ({
+  appearance,
+  children,
+  className,
+  ...props
+}: ButtonProps) => (
+  <button
+    className={clsx(styles.button, styles[appearance], className)}
+    {...props}>
+    {children}
+  </button>
+);

@@ -1,16 +1,16 @@
-import { PropsWithChildren } from 'react';
 import clsx from 'clsx';
 import { HTagProps } from './HTag.props';
 import styles from './HTag.module.css';
 
 export const HTag = ({
-  tag = 'h1',
+  tag,
   className,
   children,
-}: PropsWithChildren<HTagProps>): JSX.Element => {
+  ...props
+}: HTagProps): JSX.Element => {
   const Component = tag;
   return (
-    <Component className={clsx(styles.tag, styles[tag], className)}>
+    <Component className={clsx(styles.tag, styles[tag], className)} {...props}>
       {children}
     </Component>
   );
