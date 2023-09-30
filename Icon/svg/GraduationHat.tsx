@@ -13,5 +13,3 @@ export const GraduationHat = (props: IconSpecificProps) => (
     />
   </Icon>
 );
-
-export default GraduationHat;
