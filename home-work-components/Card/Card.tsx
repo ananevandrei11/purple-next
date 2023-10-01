@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import clsx from 'clsx';
-import { CardTestProps } from './CardTest.props';
-import styles from './CardTest.module.css';
+import { CardProps } from './Card.props';
+import styles from './Card.module.css';
 import { HTag, Paragraph } from '@/components';
 import Link from 'next/link';
 import { ArrowRight, Like } from '@/Icon';
 
-export const CardTest = ({
+export const Card = ({
   img,
   theme,
   datePublish,
@@ -17,7 +17,7 @@ export const CardTest = ({
   readLink,
   readHref,
   className,
-}: CardTestProps) => (
+}: CardProps) => (
   <div className={clsx(styles.card, className)}>
     <Image
       src={img.src}

@@ -1,7 +1,7 @@
 import { StaticImageData } from 'next/image';
 import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 
-export interface CardTestProps
+export interface CardProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   img: StaticImageData;
   title: string;

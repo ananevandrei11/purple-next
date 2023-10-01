@@ -1,9 +1,8 @@
-import { Button, HTag, Paragraph, Tag } from '@/components';
+import { useState } from 'react';
 import { Noto_Sans_KR } from 'next/font/google';
+import { Button, HTag, Paragraph, Rating, Tag } from '@/components';
 import Logo from '@/public/vercel.svg';
 import { GraduationHat } from '@/Icon';
-import { CardTest } from '@/blocks';
-import PreviewCard from '@/public/PreviewCard.jpg';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin', 'cyrillic'],
@@ -13,21 +12,10 @@ const notoSansKR = Noto_Sans_KR({
 });
 
 export default function Home(): JSX.Element {
+  const [rating, setRating] = useState(3);
   return (
     <main className={`${notoSansKR.className}`}>
-      <div>
-        <CardTest
-          img={PreviewCard}
-          theme="Front-end"
-          datePublish="1 месяц назад"
-          like="4"
-          title="Как работать с CSS Grid"
-          text={`Грид-раскладка (CSS Grid Layout) представляет собой двумерную систему сеток в CSS. Гриды подойдут и для верстки основных областей страницы..`}
-          readTime="3 минуты"
-          readLink="Читать"
-          readHref="/"
-        />
-      </div>
+      <Rating rating={rating} isEditable setRating={setRating} />
       <br />
       <hr />
       <br />
