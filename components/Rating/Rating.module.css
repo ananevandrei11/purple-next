@@ -4,8 +4,13 @@
   margin: 0 -2px;
 }
 
-.star {
+.wrapper {
   flex-shrink: 0;
+  height: 20px;
+}
+
+.star {
+  display: inline-block;
   padding: 0 2px;
   font-size: 20px;
 }

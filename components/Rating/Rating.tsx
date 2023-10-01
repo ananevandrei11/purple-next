@@ -40,7 +40,6 @@ export const Rating = ({
     const updatedRatingArray = ratingArray.map((r: JSX.Element, i: number) => {
       return (
         <span
-          key={String(r)}
           className={styles.star}
           onMouseEnter={() => changeDisplay(i + 1)}
           onMouseLeave={() => changeDisplay(rating)}
@@ -69,7 +68,11 @@ export const Rating = ({
 
   return (
     <div className={clsx(styles.rating, className)} {...props}>
-      {ratingArray.map((r: JSX.Element) => r)}
+      {ratingArray.map((r: JSX.Element, i: number) => (
+        <span key={i} className={styles.wrapper}>
+          {r}
+        </span>
+      ))}
     </div>
   );
 };
