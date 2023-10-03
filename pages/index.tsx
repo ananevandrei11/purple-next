@@ -3,6 +3,7 @@ import { Noto_Sans_KR } from 'next/font/google';
 import { Button, HTag, Paragraph, Rating, Tag } from '@/components';
 import Logo from '@/public/vercel.svg';
 import { GraduationHat } from '@/Icon';
+import { withLayout } from '@/layout/Layout';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin', 'cyrillic'],
@@ -11,10 +12,10 @@ const notoSansKR = Noto_Sans_KR({
   preload: true,
 });
 
-export default function Home(): JSX.Element {
+function Home(): JSX.Element {
   const [rating, setRating] = useState(3);
   return (
-    <main className={`${notoSansKR.className}`}>
+    <div className={`${notoSansKR.className}`}>
       <Rating rating={rating} isEditable setRating={setRating} />
       <br />
       <hr />
@@ -46,6 +47,8 @@ export default function Home(): JSX.Element {
       <Tag size="small" color="green" href="/">
         Default
       </Tag>
-    </main>
+    </div>
   );
 }
+
+export default withLayout(Home);
