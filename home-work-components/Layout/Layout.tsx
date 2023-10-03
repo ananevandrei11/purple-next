@@ -1,22 +1,16 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
-import { SideBar } from './SideBar/SideBar';
 import { Header } from './Header/Header';
-import { Footer } from './Footer/Footer';
 
 function Layout({ children }: PropsWithChildren<unknown>): JSX.Element {
   return (
     <>
       <Header />
-      <main>
-        <SideBar />
-        <section>{children}</section>
-      </main>
-      <Footer />
+      <main>{children}</main>
     </>
   );
 }
 
-export function withLayout<T extends Record<string, unknown>>(
+export function withLayoutHM<T extends Record<string, unknown>>(
   Component: FunctionComponent<T>
 ) {
   return function withLayoutComponent(props: T): JSX.Element {

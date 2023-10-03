@@ -1,8 +1,8 @@
-import { Noto_Sans_KR } from 'next/font/google';
-import { Card } from '@/home-work-components';
-import PreviewCard from '@/public/PreviewCard.jpg';
-import { LikeBtn } from '@/home-work-components/LikeBtn/LikeBtn';
 import { useState } from 'react';
+import { Noto_Sans_KR } from 'next/font/google';
+import { Card, LikeBtn } from '@/home-work-components';
+import PreviewCard from '@/public/PreviewCard.jpg';
+import { withLayoutHM } from '@/home-work-components/Layout/Layout';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin', 'cyrillic'],
@@ -11,7 +11,7 @@ const notoSansKR = Noto_Sans_KR({
   preload: true,
 });
 
-export default function Home(): JSX.Element {
+function HomeWork(): JSX.Element {
   const [activeLike, setActiveLike] = useState<boolean>(false);
 
   const handleLike = async () => {
@@ -34,7 +34,7 @@ export default function Home(): JSX.Element {
   };
 
   return (
-    <main className={`${notoSansKR.className}`}>
+    <div className={`${notoSansKR.className}`}>
       <div>
         <Card
           img={PreviewCard}
@@ -52,6 +52,8 @@ export default function Home(): JSX.Element {
       <hr />
       <br />
       <LikeBtn active={activeLike} onClick={handleLike} />
-    </main>
+    </div>
   );
 }
+
+export default withLayoutHM(HomeWork);
