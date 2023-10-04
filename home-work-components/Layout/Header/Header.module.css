@@ -1,30 +1,30 @@
 .header {
-  padding: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  padding: 10px;
 }
 
 .home {
-  color: black;
   font-size: 40px;
   font-weight: 300;
+  color: black;
   word-wrap: break-word;
 }
 
 .logo {
+  display: flex;
   flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
   width: 80px;
   height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   font-weight: 700;
 }
 
 .github {
-  padding: 0 8px;
   flex-shrink: 0;
+  padding: 0 8px;
   font-size: 24px;
   color: #4b4b4b;
 }

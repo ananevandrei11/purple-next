@@ -5,6 +5,7 @@ import Logo from '@/public/vercel.svg';
 import { GraduationHat } from '@/Icon';
 import { withLayout } from '@/layout/Layout';
 
+// https://github.com/vercel/next.js/issues/45080 - Error with fonts
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin', 'cyrillic'],
   weight: ['300', '400', '500', '600', '700'],
