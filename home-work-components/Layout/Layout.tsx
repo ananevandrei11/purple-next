@@ -1,12 +1,13 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { Header } from './Header/Header';
+import styles from './Layout.module.css';
 
 function Layout({ children }: PropsWithChildren<unknown>): JSX.Element {
   return (
-    <>
-      <Header />
-      <main>{children}</main>
-    </>
+    <div className={styles.wrapper}>
+      <Header className={styles.header} />
+      <main className={styles.content}>{children}</main>
+    </div>
   );
 }
 

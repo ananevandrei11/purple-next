@@ -4,8 +4,8 @@ import styles from './Header.module.css';
 import { HeaderProps } from './Header.props';
 import { GitHub } from '@/Icon/svg/GitHub';
 
-export const Header = ({ ...props }: HeaderProps) => (
-  <header className={clsx(styles.header)} {...props}>
+export const Header = ({ className, ...props }: HeaderProps) => (
+  <header className={clsx(styles.header, className)} {...props}>
     <Link href="/home-work" className={styles.home}>
       My Blog
     </Link>

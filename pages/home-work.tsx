@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Noto_Sans_KR } from 'next/font/google';
-import { Card, LikeBtn } from '@/home-work-components';
-import PreviewCard from '@/public/PreviewCard.jpg';
+import { CardsGrid, LikeBtn } from '@/home-work-components';
 import { withLayoutHM } from '@/home-work-components/Layout/Layout';
 
 const notoSansKR = Noto_Sans_KR({
@@ -35,19 +34,7 @@ function HomeWork(): JSX.Element {
 
   return (
     <div className={`${notoSansKR.className}`}>
-      <div>
-        <Card
-          img={PreviewCard}
-          theme="Front-end"
-          datePublish="1 месяц назад"
-          like="4"
-          title="Как работать с CSS Grid"
-          text={`Грид-раскладка (CSS Grid Layout) представляет собой двумерную систему сеток в CSS. Гриды подойдут и для верстки основных областей страницы..`}
-          readTime="3 минуты"
-          readLink="Читать"
-          readHref="/"
-        />
-      </div>
+      <CardsGrid />
       <br />
       <hr />
       <br />
