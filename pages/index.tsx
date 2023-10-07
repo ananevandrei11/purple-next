@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import { GetStaticProps } from 'next';
 import { Noto_Sans_KR } from 'next/font/google';
+import axios from 'axios';
 import { Button, HTag, Paragraph, Rating, Tag } from '@/components';
 import Logo from '@/public/vercel.svg';
 import { GraduationHat } from '@/Icon';
 import { withLayout } from '@/layout/Layout';
+import { MenuItem } from '@/interfaces/menu.interface';
+import Link from 'next/link';
 
 // https://github.com/vercel/next.js/issues/45080 - Error with fonts
 const notoSansKR = Noto_Sans_KR({
@@ -13,7 +17,7 @@ const notoSansKR = Noto_Sans_KR({
   preload: true,
 });
 
-function Home(): JSX.Element {
+function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState(3);
   return (
     <div className={`${notoSansKR.className}`}>
@@ -48,8 +52,39 @@ function Home(): JSX.Element {
       <Tag size="small" color="green" href="/">
         Default
       </Tag>
+      <ul>
+        {menu.map((i) => (
+          <li key={i._id.secondCategory}>
+            <Link href={`'course/${i._id.secondCategory}`}>
+              {i._id.secondCategory}
+            </Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+  const firstCategory = 0;
+  const { data: menu } = await axios.post<MenuItem[]>(
+    process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
+    {
+      firstCategory,
+    }
+  );
+
+  return {
+    props: {
+      menu,
+      firstCategory,
+    },
+  };
+};
+
+interface HomeProps extends Record<string, unknown> {
+  menu: MenuItem[];
+  firstCategory: number;
+}
