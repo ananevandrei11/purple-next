@@ -10,7 +10,7 @@ export const Header = ({ className, ...props }: HeaderProps) => (
       My Blog
     </Link>
     <p className={styles.logo}>LOGO</p>
-    <Link href="https://github.com" target="blank" className={styles.github}>
+    <Link href="https://github.com/ananevandrei11" target="blank" className={styles.github}>
       <GitHub />
     </Link>
   </header>
