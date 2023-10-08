@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.home {
+  font-size: 40px;
+  font-weight: 300;
+  color: black;
+  word-wrap: break-word;
+}
+
+.logo {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  font-weight: 700;
+}
+
+.github {
+  flex-shrink: 0;
+  padding: 0 8px;
+  font-size: 24px;
+  color: #4b4b4b;
+}

@@ -1,0 +1,15 @@
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    '. . header . .'
+    '. . content . .';
+  grid-template-columns: 24px auto minmax(272px, 1440px) auto 24px;
+}
+
+.header {
+  grid-area: header;
+}
+
+.content {
+  grid-area: content;
+}

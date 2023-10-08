@@ -11,6 +11,7 @@
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev"
   },
   "dependencies": {
+    "date-fns": "^2.30.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
