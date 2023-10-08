@@ -23,7 +23,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   );
 
   return {
-    paths: menu.flatMap((m) => m.pages.map((p) => p.alias)),
+    paths: menu.flatMap((m) => m.pages.map((p) => `/course/${p.alias}`)),
     fallback: true,
   };
 };

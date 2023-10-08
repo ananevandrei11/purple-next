@@ -7,7 +7,6 @@ import Logo from '@/public/vercel.svg';
 import { GraduationHat } from '@/Icon';
 import { withLayout } from '@/layout/Layout';
 import { MenuItem } from '@/interfaces/menu.interface';
-import Link from 'next/link';
 
 // https://github.com/vercel/next.js/issues/45080 - Error with fonts
 const notoSansKR = Noto_Sans_KR({
@@ -17,7 +16,7 @@ const notoSansKR = Noto_Sans_KR({
   preload: true,
 });
 
-function Home({ menu }: HomeProps): JSX.Element {
+function Home(): JSX.Element {
   const [rating, setRating] = useState(3);
   return (
     <div className={`${notoSansKR.className}`}>
@@ -52,15 +51,6 @@ function Home({ menu }: HomeProps): JSX.Element {
       <Tag size="small" color="green" href="/">
         Default
       </Tag>
-      <ul>
-        {menu.map((i) => (
-          <li key={i._id.secondCategory}>
-            <Link href={`'course/${i._id.secondCategory}`}>
-              {i._id.secondCategory}
-            </Link>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
