@@ -10,9 +10,7 @@ export const LikeBtn = ({
   ...props
 }: LikeBtnProps) => {
   const handleClick = async () => {
-    if (onClick) {
-      onClick();
-    }
+    onClick?.();
   };
 
   return (
