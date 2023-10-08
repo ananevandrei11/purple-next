@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { Noto_Sans_KR } from 'next/font/google';
+import { GetStaticProps } from 'next/types';
+
 import { CardsGrid, LikeBtn } from '@/home-work-components';
 import { withLayoutHM } from '@/home-work-components/Layout/Layout';
+import { PostItem } from '@/interfaces/home-work/post.interface';
+import axios from 'axios';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin', 'cyrillic'],
@@ -10,7 +14,7 @@ const notoSansKR = Noto_Sans_KR({
   preload: true,
 });
 
-function HomeWork(): JSX.Element {
+function HomeWork({ posts }: HomeWorkProps): JSX.Element {
   const [activeLike, setActiveLike] = useState<boolean>(false);
 
   const handleLike = async () => {
@@ -39,8 +43,34 @@ function HomeWork(): JSX.Element {
       <hr />
       <br />
       <LikeBtn active={activeLike} onClick={handleLike} />
+      <br />
+      <hr />
+      <br />
+      <div>{posts.length}</div>
     </div>
   );
 }
 
 export default withLayoutHM(HomeWork);
+
+export const getStaticProps: GetStaticProps<HomeWorkProps> = async () => {
+  const { data: posts, status } = await axios.get<PostItem[]>(
+    process.env.NEXT_PUBLIC_DOMAIN_HM + '/posts?_limit=10'
+  );
+
+  if (status >= 400) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      posts,
+    },
+  };
+};
+
+interface HomeWorkProps extends Record<string, unknown> {
+  posts: PostItem[];
+}
