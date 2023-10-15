@@ -6,8 +6,7 @@ import { TopPageModel } from '@/interfaces/page.interface';
 import { ParsedUrlQuery } from 'querystring';
 import { ProductModel } from '@/interfaces/product.interface';
 
-function Course({ menu, page, products }: CourseProps): JSX.Element {
-  console.log({ menu, page, products });
+function Course({ products }: CourseProps): JSX.Element {
   return <>{products.length}</>;
 }
 
@@ -23,7 +22,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   );
 
   return {
-    paths: menu.flatMap((m) => m.pages.map((p) => p.alias)),
+    paths: menu.flatMap((m) => m.pages.map((p) => `/course/${p.alias}`)),
     fallback: true,
   };
 };
