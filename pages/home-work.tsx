@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Noto_Sans_KR } from 'next/font/google';
 import { GetStaticProps } from 'next/types';
 
@@ -6,6 +6,7 @@ import { CardsGrid, LikeBtn } from '@/home-work-components';
 import { withLayoutHM } from '@/home-work-components/Layout/Layout';
 import { PostItem } from '@/interfaces/home-work/post.interface';
 import axios from 'axios';
+import { HWContext } from '@/context/home-work.context';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin', 'cyrillic'],
@@ -14,8 +15,13 @@ const notoSansKR = Noto_Sans_KR({
   preload: true,
 });
 
-function HomeWork({ posts }: HomeWorkProps): JSX.Element {
+function HomeWork({ posts, github }: HomeWorkProps): JSX.Element {
   const [activeLike, setActiveLike] = useState<boolean>(false);
+  const { setGitHub } = useContext(HWContext);
+
+  useEffect(() => {
+    setGitHub?.(github);
+  });
 
   const handleLike = async () => {
     try {
@@ -58,6 +64,8 @@ export const getStaticProps: GetStaticProps<HomeWorkProps> = async () => {
     process.env.NEXT_PUBLIC_DOMAIN_HM + '/posts?_limit=10'
   );
 
+  const gitHubLink = 'https://github.com/ananevandrei11';
+
   if (status >= 400) {
     return {
       notFound: true,
@@ -67,10 +75,12 @@ export const getStaticProps: GetStaticProps<HomeWorkProps> = async () => {
   return {
     props: {
       posts,
+      github: gitHubLink,
     },
   };
 };
 
 interface HomeWorkProps extends Record<string, unknown> {
   posts: PostItem[];
+  github: string;
 }
