@@ -6,8 +6,7 @@ import { TopPageModel } from '@/interfaces/page.interface';
 import { ParsedUrlQuery } from 'querystring';
 import { ProductModel } from '@/interfaces/product.interface';
 
-function Course({ menu, page, products }: CourseProps): JSX.Element {
-  console.log({ menu, page, products });
+function Course({ products }: CourseProps): JSX.Element {
   return <>{products.length}</>;
 }
 
