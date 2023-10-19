@@ -15,7 +15,7 @@ export const HWContextProvider = ({
   children,
 }: PropsWithChildren<IHWContext>): JSX.Element => {
   const [gitHubState, setGtHubState] = useState<string>(github);
-  console.log(gitHubState);
+
   const setGitHub = (link: string) => {
     setGtHubState(link);
   };
