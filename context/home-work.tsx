@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useState } from 'react';
+import { PropsWithChildren, createContext, useContext, useState } from 'react';
 
 // HW - HomeWOrk
 export interface IHWContext {
@@ -26,3 +26,5 @@ export const HWContextProvider = ({
     </HWContext.Provider>
   );
 };
+
+export const useHMContext = () => useContext(HWContext);

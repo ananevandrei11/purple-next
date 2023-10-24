@@ -1,7 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { Header } from './Header/Header';
 import styles from './Layout.module.css';
-import { HWContextProvider, IHWContext } from '@/context/home-work.context';
+import { HWContextProvider, IHWContext } from '@/context/home-work';
 
 function Layout({ children }: PropsWithChildren<unknown>): JSX.Element {
   return (

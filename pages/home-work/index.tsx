@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Noto_Sans_KR } from 'next/font/google';
 import { GetStaticProps } from 'next/types';
 
@@ -6,7 +6,7 @@ import { CardsGrid, LikeBtn } from '@/home-work-components';
 import { withLayoutHM } from '@/home-work-components/Layout/Layout';
 import { PostItem } from '@/interfaces/home-work/post.interface';
 import axios from 'axios';
-import { HWContext } from '@/context/home-work.context';
+import { useHMContext } from '@/context/home-work';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin', 'cyrillic'],
@@ -17,7 +17,7 @@ const notoSansKR = Noto_Sans_KR({
 
 function HomeWork({ posts, github }: HomeWorkProps): JSX.Element {
   const [activeLike, setActiveLike] = useState<boolean>(false);
-  const { setGitHub } = useContext(HWContext);
+  const { setGitHub } = useHMContext();
 
   useEffect(() => {
     setGitHub?.(github);
@@ -45,13 +45,7 @@ function HomeWork({ posts, github }: HomeWorkProps): JSX.Element {
   return (
     <div className={`${notoSansKR.className}`}>
       <CardsGrid cards={posts} />
-      <br />
-      <hr />
-      <br />
       <LikeBtn active={activeLike} onClick={handleLike} />
-      <br />
-      <hr />
-      <br />
       <div>{posts.length}</div>
     </div>
   );
