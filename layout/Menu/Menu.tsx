@@ -10,7 +10,7 @@ import styles from './Menu.module.css';
 export const Menu = () => {
   const { menu, firstCategory, setMenu } = useContext(AppContext);
   const router = useRouter();
-  console.log(menu);
+
   const openSecondLevel = (secondCategory: string) => {
     setMenu?.(
       menu.map((m) => {

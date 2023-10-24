@@ -6,9 +6,12 @@ import { TopLevelCategory, TopPageModel } from '@/interfaces/page.interface';
 import { ParsedUrlQuery } from 'querystring';
 import { ProductModel } from '@/interfaces/product.interface';
 import { firstLevelMenu } from '@/helpers/helpers';
+import { TopPage } from '@/page-components';
 
-function Alias({ products }: AliasProps): JSX.Element {
-  return <>{products?.length}</>;
+function Alias({ products, firstCategory, page }: AliasProps): JSX.Element {
+  return (
+    <TopPage page={page} firstCategory={firstCategory} products={products} />
+  );
 }
 
 export default withLayout(Alias);
