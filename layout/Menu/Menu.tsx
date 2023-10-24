@@ -1,14 +1,13 @@
-import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { AppContext } from '@/context/app.context';
+import { useAppContext } from '@/context/app.context';
 import { FirstLevelMenuItem, PageItem } from '@/interfaces/menu.interface';
 import { firstLevelMenu } from '@/helpers/helpers';
 import styles from './Menu.module.css';
 
 export const Menu = () => {
-  const { menu, firstCategory, setMenu } = useContext(AppContext);
+  const { menu, firstCategory, setMenu } = useAppContext();
   const router = useRouter();
 
   const openSecondLevel = (secondCategory: string) => {

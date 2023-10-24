@@ -1,11 +1,7 @@
 import { TopLevelCategory, TopPageModel } from '@/interfaces/page.interface';
 import { ProductModel } from '@/interfaces/product.interface';
 
-export const TopPage = ({
-  page,
-}: //   firstCategory,
-//   products,
-Props): JSX.Element => {
+export const TopPage = ({ page }: Props): JSX.Element => {
   return <pre>{JSON.stringify(page, null, 2)}</pre>;
 };
 

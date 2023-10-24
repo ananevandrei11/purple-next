@@ -1,4 +1,10 @@
-import { PropsWithChildren, createContext, useEffect, useState } from 'react';
+import {
+  PropsWithChildren,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { MenuItem } from '@/interfaces/menu.interface';
 import { TopLevelCategory } from '@/interfaces/page.interface';
 
@@ -33,3 +39,5 @@ export const AppContextProvider = ({
     </AppContext.Provider>
   );
 };
+
+export const useAppContext = () => useContext(AppContext);
