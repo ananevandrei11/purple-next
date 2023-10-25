@@ -1,6 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { Header } from './Header/Header';
 import styles from './Layout.module.css';
+import { HWContextProvider, IHWContext } from '@/context/home-work';
 
 function Layout({ children }: PropsWithChildren<unknown>): JSX.Element {
   return (
@@ -11,14 +12,16 @@ function Layout({ children }: PropsWithChildren<unknown>): JSX.Element {
   );
 }
 
-export function withLayoutHM<T extends Record<string, unknown>>(
+export function withLayoutHM<T extends Record<string, unknown> & IHWContext>(
   Component: FunctionComponent<T>
 ) {
   return function withLayoutComponent(props: T): JSX.Element {
     return (
-      <Layout>
-        <Component {...props} />
-      </Layout>
+      <HWContextProvider github={props.github}>
+        <Layout>
+          <Component {...props} />
+        </Layout>
+      </HWContextProvider>
     );
   };
 }

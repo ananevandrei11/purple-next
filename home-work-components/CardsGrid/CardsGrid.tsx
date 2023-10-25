@@ -1,10 +1,12 @@
+import { useMemo } from 'react';
 import PreviewCard from '@/public/PreviewCard.jpg';
-import { Card } from '../Card/Card';
+import { PostItem } from '@/interfaces/home-work/post.interface';
 import styles from './CarsGrid.module.css';
+import { Card } from '../Card/Card';
 
-const CARDS = [
+const cardsMock = [
   {
-    id: 0,
+    id: 2021,
     img: PreviewCard,
     theme: 'Front-end',
     datePublish: '2021-10-05T14:48:00.000Z',
@@ -13,10 +15,10 @@ const CARDS = [
     text: `Грид-раскладка (CSS Grid Layout) представляет собой двумерную систему сеток в CSS. Гриды подойдут и для верстки основных областей страницы..`,
     readTime: '31',
     readLink: 'Читать',
-    readHref: '/',
+    readHref: '/home-work',
   },
   {
-    id: 1,
+    id: 2022,
     img: PreviewCard,
     theme: 'Back-end',
     datePublish: '2023-10-01T14:48:00.000Z',
@@ -25,10 +27,10 @@ const CARDS = [
     text: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus ducimus maiores autem iusto est sed?`,
     readTime: '157',
     readLink: 'Читать',
-    readHref: '/',
+    readHref: '/home-work',
   },
   {
-    id: 2,
+    id: 2023,
     img: PreviewCard,
     theme: 'Design',
     datePublish: '2023-01-05T14:48:00.000Z',
@@ -37,14 +39,33 @@ const CARDS = [
     text: `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus ducimus maiores autem iusto est sed?`,
     readTime: '2',
     readLink: 'Читать',
-    readHref: '/',
+    readHref: '/home-work',
   },
 ];
 
-export default function CardsGrid(): JSX.Element {
+const cardMock = {
+  img: PreviewCard,
+  theme: 'Design',
+  datePublish: '2023-01-05T14:48:00.000Z',
+  like: '5',
+  readTime: '2',
+  readLink: 'Читать',
+};
+
+export default function CardsGrid({ cards }: Props): JSX.Element {
+  const cardsUpdate = useMemo(() => {
+    const a = cards.map((c) => ({
+      ...c,
+      ...cardMock,
+      readHref: `/home-work/post/${c.id}`,
+      text: c.body,
+    }));
+    return cardsMock.concat(a);
+  }, [cards]);
+
   return (
     <div className={styles.grid}>
-      {CARDS.map((c) => (
+      {cardsUpdate.map((c) => (
         <Card
           key={c.id}
           img={c.img}
@@ -60,4 +81,8 @@ export default function CardsGrid(): JSX.Element {
       ))}
     </div>
   );
+}
+
+interface Props extends Record<string, unknown> {
+  cards: PostItem[];
 }
