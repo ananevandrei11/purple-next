@@ -1,8 +1,75 @@
+import { HTag, Paragraph, Tag } from '@/components';
 import { TopLevelCategory, TopPageModel } from '@/interfaces/page.interface';
 import { ProductModel } from '@/interfaces/product.interface';
+import styles from './TopPage.module.css';
+import { HHData } from '..';
+import { Advantages } from '../Advatages/Advantages';
 
-export const TopPage = ({ page }: Props): JSX.Element => {
-  return <pre>{JSON.stringify(page, null, 2)}</pre>;
+export const TopPage = ({
+  page,
+  products,
+  firstCategory,
+}: Props): JSX.Element => {
+  const { title } = page;
+  console.log({ page, products, firstCategory });
+  return (
+    <div className={styles.wrapper}>
+      <div className={styles.title}>
+        <HTag tag="h1">{title}</HTag>
+        {products && (
+          <Tag color="grey" size="medium">
+            {products.length}
+          </Tag>
+        )}
+        <span>Sort</span>
+      </div>
+      <div>
+        {products.map((p) => (
+          <div key={p._id}>{p.title}</div>
+        ))}
+      </div>
+
+      {page.hh && (
+        <section className={styles.hh}>
+          <div className={styles.hhTitle}>
+            <HTag tag="h2">Вакансии - {page.category}</HTag>
+            <Tag color="red" size="medium">
+              HH.ru
+            </Tag>
+          </div>
+          <HHData data={page.hh} />
+        </section>
+      )}
+
+      {page?.advantages && page?.advantages.length > 0 && (
+        <Advantages advantages={page.advantages} />
+      )}
+
+      {page.seoText && (
+        <article>
+          <Paragraph size="large">
+            <span
+              className={styles.seoText}
+              dangerouslySetInnerHTML={{ __html: page.seoText }}
+            />
+          </Paragraph>
+        </article>
+      )}
+
+      {page.tags && page.tags.length > 0 && (
+        <section className={styles.skills}>
+          <HTag tag="h2">Получаемые навыки</HTag>
+          <div className={styles.skillsTag}>
+            {page.tags.map((t) => (
+              <Tag key={t} color="primary" size="small">
+                {t}
+              </Tag>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  );
 };
 
 interface Props {

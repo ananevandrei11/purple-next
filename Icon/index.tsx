@@ -4,6 +4,15 @@ import { Cloud } from './svg/Cloud';
 import { Goods } from './svg/Goods';
 import { GraduationHat } from './svg/GraduationHat';
 import { Like } from './svg/Like';
-import { Star } from './svg/Star';
+import { Star, StarCircle } from './svg/Star';
 
-export { GraduationHat, Like, ArrowRight, Star, Cloud, Book, Goods };
+export {
+  GraduationHat,
+  Like,
+  ArrowRight,
+  Star,
+  StarCircle,
+  Cloud,
+  Book,
+  Goods,
+};

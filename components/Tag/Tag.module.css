@@ -3,6 +3,7 @@
   width: fit-content;
   line-height: 1;
   border-radius: 20px;
+  white-space: nowrap;
 }
 
 .medium {
