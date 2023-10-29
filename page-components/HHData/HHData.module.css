@@ -1,0 +1,78 @@
+.hh {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+}
+
+.hhCount {
+  padding: 20px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.hhSalary {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr 1px 1fr;
+  padding: 20px;
+  text-align: center;
+}
+
+.salaryDivider {
+  height: auto;
+  min-height: 1px;
+  background-color: var(--grey-strong);
+}
+
+.salaryItem {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.title {
+  color: var(--black);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.count {
+  color: var(--primary);
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+}
+
+.salary {
+  color: var(--black);
+  font-size: 26px;
+  line-height: 30px;
+  font-weight: 700;
+}
+
+.rate {
+  color: var(--grey);
+  display: grid;
+  grid-template-columns: repeat(3, 20px);
+  justify-content: center;
+  gap: 10px;
+}
+
+.filled {
+  color: var(--red);
+}
+
+@media (max-width: 1440px) {
+  .hh {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hhSalary {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

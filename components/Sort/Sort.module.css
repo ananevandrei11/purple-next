@@ -1,0 +1,26 @@
+.group {
+  display: flex;
+  gap: 20px;
+}
+.btn {
+  display: flex;
+  gap: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.icon {
+  display: none;
+}
+
+.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.active .icon {
+  display: block;
+  width: 20px;
+  height: 13px;
+}

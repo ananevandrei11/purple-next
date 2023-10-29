@@ -4,8 +4,6 @@ import { MenuItem } from '@/interfaces/menu.interface';
 import { withLayout } from '@/layout/Layout';
 import { firstLevelMenu } from '@/helpers/helpers';
 import { ParsedUrlQuery } from 'querystring';
-// import { AppContext } from '@/context/app.context';
-// import { useContext, useEffect } from 'react';
 
 function Type({ firstCategory }: TypeProps): JSX.Element {
   return <h1>Type: {firstCategory} </h1>;

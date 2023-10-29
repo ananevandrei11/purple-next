@@ -6,7 +6,7 @@ import Logo from '@/public/logo.svg';
 
 export const SideBar = ({ className, ...props }: SideBarProps) => (
   <aside className={clsx(styles.sidebar, className)} {...props}>
-    <Logo className={styles.logo} />
+    <Logo />
     <div>Search</div>
     <nav className={styles.nav}>
       <Menu />

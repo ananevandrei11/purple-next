@@ -17,6 +17,11 @@ a {
   text-decoration: none;
 }
 
+ol,
+ul {
+  list-style-position: inside;
+}
+
 :root {
   --black: #3b434e;
   --white: #fff;
@@ -29,5 +34,6 @@ a {
   --grey: #e2e2e2;
   --grey-light: #ebebeb;
   --grey-strong: #b3c0d9;
+  --blue: #f4f6f7;
   --ff: 'Noto Sans KR', sans-serif;
 }
