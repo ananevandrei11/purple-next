@@ -5,6 +5,7 @@ import { Goods } from './svg/Goods';
 import { GraduationHat } from './svg/GraduationHat';
 import { Like } from './svg/Like';
 import { Star, StarCircle } from './svg/Star';
+import { Sort } from './svg/Sort';
 
 export {
   GraduationHat,
@@ -15,4 +16,5 @@ export {
   Cloud,
   Book,
   Goods,
+  Sort,
 };

@@ -1,30 +1,43 @@
-import { HTag, Paragraph, Tag } from '@/components';
+import { HTag, Tag } from '@/components';
 import { TopLevelCategory, TopPageModel } from '@/interfaces/page.interface';
 import { ProductModel } from '@/interfaces/product.interface';
 import styles from './TopPage.module.css';
 import { HHData } from '..';
 import { Advantages } from '../Advatages/Advantages';
+import Sort, { SortEnum } from '@/components/Sort/Sort';
+import { useEffect, useReducer } from 'react';
+import { sortReducer } from './sort.reducer';
 
-export const TopPage = ({
-  page,
-  products,
-  firstCategory,
-}: Props): JSX.Element => {
+export const TopPage = ({ page, products }: Props): JSX.Element => {
   const { title } = page;
-  console.log({ page, products, firstCategory });
+  const [{ products: sortProducts, sort }, dispatchSort] = useReducer(
+    sortReducer,
+    {
+      products,
+      sort: SortEnum.Rating,
+    }
+  );
+  const setSort = (sort: SortEnum) => {
+    dispatchSort({ type: sort });
+  };
+
+  useEffect(() => {
+    dispatchSort({ type: 'newState', products });
+  }, [products]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
         <HTag tag="h1">{title}</HTag>
-        {products && (
+        {sortProducts && (
           <Tag color="grey" size="medium">
-            {products.length}
+            {sortProducts.length}
           </Tag>
         )}
-        <span>Sort</span>
+        <Sort sort={sort} setSort={setSort} />
       </div>
       <div>
-        {products.map((p) => (
+        {sortProducts?.map((p) => (
           <div key={p._id}>{p.title}</div>
         ))}
       </div>
@@ -46,14 +59,10 @@ export const TopPage = ({
       )}
 
       {page.seoText && (
-        <article>
-          <Paragraph size="large">
-            <span
-              className={styles.seoText}
-              dangerouslySetInnerHTML={{ __html: page.seoText }}
-            />
-          </Paragraph>
-        </article>
+        <article
+          className={styles.seoText}
+          dangerouslySetInnerHTML={{ __html: page.seoText }}
+        />
       )}
 
       {page.tags && page.tags.length > 0 && (
