@@ -3,9 +3,10 @@ import axios from 'axios';
 import { withLayoutHM } from '@/home-work-components/Layout/Layout';
 import { ParsedUrlQuery } from 'querystring';
 import { PostItem } from '@/interfaces/home-work/post.interface';
+import PostPage from '@/homw-work-page-components/PostPage/PostPage';
 
 function Post({ post }: Props): JSX.Element {
-  return <pre>{JSON.stringify(post, null, 2)}</pre>;
+  return <PostPage post={post} />;
 }
 
 export default withLayoutHM(Post);
