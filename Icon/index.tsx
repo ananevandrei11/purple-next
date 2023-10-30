@@ -6,6 +6,7 @@ import { GraduationHat } from './svg/GraduationHat';
 import { Like } from './svg/Like';
 import { Star, StarCircle } from './svg/Star';
 import { Sort } from './svg/Sort';
+import { Search } from './svg/Search';
 
 export {
   GraduationHat,
@@ -17,4 +18,5 @@ export {
   Book,
   Goods,
   Sort,
+  Search as SearchIcon,
 };

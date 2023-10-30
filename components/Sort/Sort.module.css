@@ -2,12 +2,13 @@
   display: flex;
   gap: 20px;
 }
+
 .btn {
   display: flex;
   gap: 8px;
-  border: none;
-  background-color: transparent;
   cursor: pointer;
+  background-color: transparent;
+  border: none;
 }
 
 .icon {
@@ -15,8 +16,8 @@
 }
 
 .active {
-  color: var(--primary);
   font-weight: 700;
+  color: var(--primary);
 }
 
 .active .icon {
