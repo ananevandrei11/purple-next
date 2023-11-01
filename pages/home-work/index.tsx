@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Noto_Sans_KR } from 'next/font/google';
 import { GetStaticProps } from 'next/types';
 
-import { CardsGrid, LikeBtn } from '@/home-work-components';
+import { CardsGrid } from '@/home-work-components';
 import { withLayoutHM } from '@/home-work-components/Layout/Layout';
 import { PostItem } from '@/interfaces/home-work/post.interface';
 import axios from 'axios';
@@ -16,36 +16,15 @@ const notoSansKR = Noto_Sans_KR({
 });
 
 function HomeWork({ posts, github }: HomeWorkProps): JSX.Element {
-  const [activeLike, setActiveLike] = useState<boolean>(false);
   const { setGitHub } = useHMContext();
 
   useEffect(() => {
     setGitHub?.(github);
   });
 
-  const handleLike = async () => {
-    try {
-      const isLike = !activeLike;
-      const res = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
-        method: isLike ? 'PATCH' : 'DELETE',
-      });
-
-      if (!res.ok) {
-        const text = await res.text();
-        throw Error(text);
-      }
-
-      setActiveLike(isLike);
-      return isLike;
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <div className={`${notoSansKR.className}`}>
       <CardsGrid cards={posts} />
-      <LikeBtn active={activeLike} onClick={handleLike} />
       <div>{posts.length}</div>
     </div>
   );

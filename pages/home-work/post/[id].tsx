@@ -2,11 +2,11 @@ import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import axios from 'axios';
 import { withLayoutHM } from '@/home-work-components/Layout/Layout';
 import { ParsedUrlQuery } from 'querystring';
-import { PostItem } from '@/interfaces/home-work/post.interface';
+import { PostComments, PostItem } from '@/interfaces/home-work/post.interface';
 import PostPage from '@/homw-work-page-components/PostPage/PostPage';
 
-function Post({ post }: Props): JSX.Element {
-  return <PostPage post={post} />;
+function Post({ post, comments }: Props): JSX.Element {
+  return <PostPage post={post} comments={comments} />;
 }
 
 export default withLayoutHM(Post);
@@ -42,9 +42,14 @@ export const getStaticProps: GetStaticProps<Props> = async ({
     const { data: post } = await axios.get<PostItem>(
       process.env.NEXT_PUBLIC_DOMAIN_HM + `/posts/${id}`
     );
+
+    const { data: comments } = await axios.get<PostComments[]>(
+      process.env.NEXT_PUBLIC_DOMAIN_HM + `/comments?postId=${id}`
+    );
     return {
       props: {
         post,
+        comments,
         github: gitHubLink,
       },
     };
@@ -57,5 +62,6 @@ export const getStaticProps: GetStaticProps<Props> = async ({
 
 interface Props extends Record<string, unknown> {
   post: PostItem;
+  comments: PostComments[];
   github: string;
 }
