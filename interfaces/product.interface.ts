@@ -43,7 +43,7 @@ export interface ReviewModel {
   description: string;
   rating: number;
   productId: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   __v: number;
 }

@@ -7,6 +7,7 @@ import Logo from '@/public/vercel.svg';
 import { GraduationHat } from '@/Icon';
 import { withLayout } from '@/layout/Layout';
 import { MenuItem } from '@/interfaces/menu.interface';
+import { API } from '@/helpers/api';
 
 // https://github.com/vercel/next.js/issues/45080 - Error with fonts
 const notoSansKR = Noto_Sans_KR({
@@ -59,12 +60,9 @@ export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const firstCategory = 0;
-  const { data: menu } = await axios.post<MenuItem[]>(
-    process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-    {
-      firstCategory,
-    }
-  );
+  const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
+    firstCategory,
+  });
 
   return {
     props: {

@@ -1,0 +1,17 @@
+.review {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 16px;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 30px auto auto auto auto;
+  justify-content: space-between;
+}
+
+@media (width <= 768px) {
+  .header {
+    grid-template-columns: auto;
+  }
+}

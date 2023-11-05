@@ -1,13 +1,23 @@
-import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { DetailedHTMLProps, InputHTMLAttributes, forwardRef } from 'react';
 import styles from './Input.module.css';
 import clsx from 'clsx';
+import { FieldError } from 'react-hook-form';
 
-export interface Props
+export interface IProps
   extends DetailedHTMLProps<
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
-  > {}
+  > {
+  error?: FieldError;
+}
 
-export const Input = ({ className, ...props }: Props) => {
-  return <input className={clsx(className, styles.input)} {...props} />;
-};
+export const Input = forwardRef<HTMLInputElement, IProps>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div>
+        <input ref={ref} className={clsx(className, styles.input)} {...props} />
+        {props.error && <p>{props.error.message}</p>}
+      </div>
+    );
+  }
+);
