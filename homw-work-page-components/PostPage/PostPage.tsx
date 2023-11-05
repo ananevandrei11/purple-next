@@ -6,6 +6,7 @@ import styles from './PostPage.module.css';
 import { LikeBtn } from '@/home-work-components';
 import { HTag } from '@/components';
 import Comments from '../Comments/Comments';
+import FormReview from '../FormReview/FormReview';
 
 interface Props {
   post: PostItem;
@@ -70,6 +71,7 @@ const PostPage = ({ post, comments }: Props) => {
       </div>
 
       {comments && comments.length > 0 && <Comments comments={comments} />}
+      <FormReview />
     </div>
   );
 };
