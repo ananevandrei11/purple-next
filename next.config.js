@@ -9,6 +9,9 @@ const nextConfig = {
     });
     return config;
   },
+  images: {
+    domains: ['courses-top.ru', 'cdn-bucket.hb.bizmrg.com'],
+  },
 };
 
 // eslint-disable-next-line no-undef

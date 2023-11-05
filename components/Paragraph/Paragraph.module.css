@@ -1,7 +1,7 @@
 .paragraph {
   font-weight: 400;
-  word-wrap: break-word;
   text-wrap: balance;
+  word-wrap: break-word;
 }
 
 .large {

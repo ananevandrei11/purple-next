@@ -1,4 +1,4 @@
-import { HTag, Tag } from '@/components';
+import { HTag, Input, Tag, Textarea } from '@/components';
 import { TopLevelCategory, TopPageModel } from '@/interfaces/page.interface';
 import { ProductModel } from '@/interfaces/product.interface';
 import styles from './TopPage.module.css';
@@ -7,6 +7,7 @@ import { Advantages } from '../Advatages/Advantages';
 import Sort, { SortEnum } from '@/components/Sort/Sort';
 import { useEffect, useReducer } from 'react';
 import { sortReducer } from './sort.reducer';
+import Product from '../Product/Product';
 
 export const TopPage = ({ page, products }: Props): JSX.Element => {
   const { title } = page;
@@ -36,11 +37,9 @@ export const TopPage = ({ page, products }: Props): JSX.Element => {
         )}
         <Sort sort={sort} setSort={setSort} />
       </div>
-      <div>
-        {sortProducts?.map((p) => (
-          <div key={p._id}>{p.title}</div>
-        ))}
-      </div>
+
+      {sortProducts &&
+        sortProducts.map((p) => <Product key={p._id} product={p} />)}
 
       {page.hh && (
         <section className={styles.hh}>
@@ -53,6 +52,9 @@ export const TopPage = ({ page, products }: Props): JSX.Element => {
           <HHData data={page.hh} />
         </section>
       )}
+
+      <Input />
+      <Textarea />
 
       {page?.advantages && page?.advantages.length > 0 && (
         <Advantages advantages={page.advantages} />

@@ -85,6 +85,6 @@
 }
 
 .thirdLevelActive {
-  color: var(--primary);
   font-weight: 700;
+  color: var(--primary);
 }

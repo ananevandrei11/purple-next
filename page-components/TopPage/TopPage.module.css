@@ -7,9 +7,9 @@
 .title {
   display: grid;
   grid-template-columns: auto 1fr auto;
+  gap: 20px;
   align-items: baseline;
   justify-items: left;
-  gap: 20px;
 }
 
 .hh {
@@ -21,9 +21,9 @@
 .hhTitle {
   display: grid;
   grid-template-columns: auto 1fr;
+  gap: 10px;
   align-items: baseline;
   justify-items: left;
-  gap: 10px;
 }
 
 .skills {
