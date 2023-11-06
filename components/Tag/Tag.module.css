@@ -2,8 +2,8 @@
   display: inline-block;
   width: fit-content;
   line-height: 1;
-  border-radius: 20px;
   white-space: nowrap;
+  border-radius: 20px;
 }
 
 .medium {

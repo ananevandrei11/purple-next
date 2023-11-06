@@ -1,0 +1,30 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 30px;
+  font-family: var(--ff);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.textarea {
+  max-width: 100%;
+}
+
+.sended {
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+
+.open {
+  padding: 10px 0;
+  max-height: 100%;
+}
+
+.success {
+  background-color: var(--green);
+}
