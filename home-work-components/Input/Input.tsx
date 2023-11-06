@@ -8,14 +8,12 @@ interface Props
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
   > {
-  label?: string;
   error?: FieldError;
 }
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label, error, className, ...props }, ref) => (
+  ({ error, className, ...props }, ref) => (
     <div className={clsx(styles.field, className)}>
-      {label && <label htmlFor={props.id}>{label}</label>}
       <input ref={ref} {...props} className={styles.input} />
       {error && <p>{error.message}</p>}
     </div>

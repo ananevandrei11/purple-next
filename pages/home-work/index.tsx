@@ -7,6 +7,7 @@ import { withLayoutHM } from '@/home-work-components/Layout/Layout';
 import { PostItem } from '@/interfaces/home-work/post.interface';
 import axios from 'axios';
 import { useHMContext } from '@/context/home-work';
+import { API_HM } from '@/helpers/apiHM';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin', 'cyrillic'],
@@ -34,7 +35,7 @@ export default withLayoutHM(HomeWork);
 
 export const getStaticProps: GetStaticProps<HomeWorkProps> = async () => {
   const { data: posts, status } = await axios.get<PostItem[]>(
-    process.env.NEXT_PUBLIC_DOMAIN_HM + '/posts?_limit=10'
+    API_HM.posts + '?_limit=10'
   );
 
   const gitHubLink = 'https://github.com/ananevandrei11';

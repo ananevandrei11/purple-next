@@ -4,6 +4,7 @@ import { withLayoutHM } from '@/home-work-components/Layout/Layout';
 import { ParsedUrlQuery } from 'querystring';
 import { PostComments, PostItem } from '@/interfaces/home-work/post.interface';
 import PostPage from '@/homw-work-page-components/PostPage/PostPage';
+import { API_HM } from '@/helpers/apiHM';
 
 function Post({ post, comments }: Props): JSX.Element {
   return <PostPage post={post} comments={comments} />;
@@ -15,7 +16,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   let paths: string[];
   try {
     const { data: posts } = await axios.get<PostItem[]>(
-      process.env.NEXT_PUBLIC_DOMAIN_HM + '/posts?_limit=10'
+      API_HM.posts + '?_limit=10'
     );
     paths = posts.map((p) => `/home-work/post/${p.id}`);
   } catch {
@@ -39,12 +40,10 @@ export const getStaticProps: GetStaticProps<Props> = async ({
   const { id } = params;
   const gitHubLink = 'https://github.com/ananevandrei11';
   try {
-    const { data: post } = await axios.get<PostItem>(
-      process.env.NEXT_PUBLIC_DOMAIN_HM + `/posts/${id}`
-    );
+    const { data: post } = await axios.get<PostItem>(API_HM.posts + `/${id}`);
 
     const { data: comments } = await axios.get<PostComments[]>(
-      process.env.NEXT_PUBLIC_DOMAIN_HM + `/comments?postId=${id}`
+      API_HM.comments + `?postId=${id}`
     );
     return {
       props: {
