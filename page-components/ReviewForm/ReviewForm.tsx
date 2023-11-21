@@ -7,7 +7,10 @@ import axios from 'axios';
 import { API } from '@/helpers/api';
 
 interface Props
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  extends DetailedHTMLProps<
+    HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
   productId: string;
 }
 
@@ -19,7 +22,9 @@ interface FormValues {
 }
 
 export const ReviewForm = ({ productId, className }: Props) => {
-  const [messageRequest, setMessageRequest] = useState<string | null>(null);
+  const [messageRequest, setMessageRequest] = useState<string | null>(
+    null
+  );
   const {
     register,
     control,
@@ -27,7 +32,6 @@ export const ReviewForm = ({ productId, className }: Props) => {
     formState: { errors },
   } = useForm<FormValues>();
   const onSubmit = async (formData: FormValues) => {
-    console.log({ formData, productId });
     try {
       const { data } = await axios.post<{ message: string }>(
         API.review.createDemo,
@@ -71,7 +75,9 @@ export const ReviewForm = ({ productId, className }: Props) => {
         <Controller
           control={control}
           name="rating"
-          rules={{ required: { value: true, message: 'Required rating' } }}
+          rules={{
+            required: { value: true, message: 'Required rating' },
+          }}
           render={({
             field: { value, onChange, ref },
             formState: { errors },
@@ -103,7 +109,8 @@ export const ReviewForm = ({ productId, className }: Props) => {
           Отправить
         </Button>
         <span>
-          * Перед публикацией отзыв пройдет предварительную модерацию и проверку
+          * Перед публикацией отзыв пройдет предварительную модерацию
+          и проверку
         </span>
       </div>
       <div

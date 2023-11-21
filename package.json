@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.3.2",
     "axios": "^1.5.1",
     "date-fns": "^2.30.0",
+    "framer-motion": "^10.16.4",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",

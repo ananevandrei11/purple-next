@@ -7,5 +7,17 @@ import { Card } from './Card/Card';
 import { Input } from './Input/Input';
 import { Textarea } from './Textarea/Textarea';
 import { Search } from './Search/Search';
+import { Up } from './Up/Up';
 
-export { HTag, Button, Paragraph, Tag, Rating, Card, Input, Textarea, Search };
+export {
+  HTag,
+  Button,
+  Paragraph,
+  Tag,
+  Rating,
+  Card,
+  Input,
+  Textarea,
+  Search,
+  Up,
+};
