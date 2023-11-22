@@ -9,14 +9,16 @@ export enum SortEnum {
 }
 
 export interface Props
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  extends DetailedHTMLProps<
+    HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+  > {
   sort: SortEnum;
   setSort: (sort: SortEnum) => void;
   className?: string;
 }
 
 const Sort = ({ setSort, sort }: Props) => {
-  console.log(sort);
   return (
     <div className={styles.group}>
       <button

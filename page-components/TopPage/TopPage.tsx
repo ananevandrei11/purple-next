@@ -1,5 +1,8 @@
 import { HTag, Input, Tag, Textarea } from '@/components';
-import { TopLevelCategory, TopPageModel } from '@/interfaces/page.interface';
+import {
+  TopLevelCategory,
+  TopPageModel,
+} from '@/interfaces/page.interface';
 import { ProductModel } from '@/interfaces/product.interface';
 import styles from './TopPage.module.css';
 import { HHData } from '..';
@@ -39,7 +42,9 @@ export const TopPage = ({ page, products }: Props): JSX.Element => {
       </div>
 
       {sortProducts &&
-        sortProducts.map((p) => <Product key={p._id} product={p} />)}
+        sortProducts.map((p) => (
+          <Product layout key={p._id} product={p} />
+        ))}
 
       {page.hh && (
         <section className={styles.hh}>

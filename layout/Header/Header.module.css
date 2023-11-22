@@ -1,3 +1,25 @@
 .header {
   display: grid;
+  grid-template-columns: 1fr 40px;
+  gap: 10px;
+  margin: 15px;
+}
+
+.menu {
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  overflow-y: scroll;
+  background-color: var(--white);
+}
+
+.close {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background-color: var(--white);
 }
