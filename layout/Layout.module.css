@@ -12,7 +12,7 @@
 }
 
 .header {
-  display: none;
+  display: none !important;
   grid-area: header;
 }
 
@@ -43,10 +43,11 @@
       'footer';
     grid-template-rows: auto 1fr auto;
     grid-template-columns: auto;
+    gap: 10px;
   }
 
   .header {
-    display: block;
+    display: grid !important;
   }
 
   .sidebar {

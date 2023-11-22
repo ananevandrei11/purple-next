@@ -8,6 +8,7 @@ import { Input } from './Input/Input';
 import { Textarea } from './Textarea/Textarea';
 import { Search } from './Search/Search';
 import { Up } from './Up/Up';
+import { ButtonSmall } from './ButtonSmall/ButtonSmall';
 
 export {
   HTag,
@@ -20,4 +21,5 @@ export {
   Textarea,
   Search,
   Up,
+  ButtonSmall,
 };

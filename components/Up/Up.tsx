@@ -6,7 +6,8 @@ import {
 import styles from './Up.module.css';
 import clsx from 'clsx';
 import { useScrollY } from '@/hooks';
-import { motion, useAnimation } from 'framer-motion';
+import { useAnimation } from 'framer-motion';
+import { ButtonSmall } from '../ButtonSmall/ButtonSmall';
 
 export interface UpProps
   extends DetailedHTMLProps<
@@ -25,17 +26,19 @@ export const Up = ({ className }: UpProps) => {
   };
 
   useEffect(() => {
+    console.log(scrollY / document.body.scrollHeight);
     controls.start({ opacity: scrollY / document.body.scrollHeight });
   }, [scrollY, controls]);
 
   return (
-    <motion.button
+    <ButtonSmall
+      appearance="primary"
       initial={{ opacity: 0 }}
       animate={controls}
       onClick={scrollToTop}
       className={clsx(styles.up, className)}
-      type="button">
-      Up
-    </motion.button>
+      type="button"
+      variant="up"
+    />
   );
 };
