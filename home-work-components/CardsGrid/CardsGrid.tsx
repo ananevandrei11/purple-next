@@ -3,6 +3,7 @@ import PreviewCard from '@/public/PreviewCard.jpg';
 import { PostItem } from '@/interfaces/home-work/post.interface';
 import styles from './CarsGrid.module.css';
 import { Card } from '../Card/Card';
+import { Variants, motion } from 'framer-motion';
 
 const cardsMock = [
   {
@@ -63,10 +64,25 @@ export default function CardsGrid({ cards }: Props): JSX.Element {
     return cardsMock.concat(a);
   }, [cards]);
 
+  const parentVariant: Variants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { staggerChildren: 0.15 } },
+  };
+
+  const childrenVariant: Variants = {
+    initial: { opacity: 0, x: 150 },
+    animate: { opacity: 1, x: 0 },
+  };
+
   return (
-    <div className={styles.grid}>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      variants={parentVariant}
+      className={styles.grid}>
       {cardsUpdate.map((c) => (
         <Card
+          variants={childrenVariant}
           key={c.id}
           img={c.img}
           theme={c.theme}
@@ -79,7 +95,7 @@ export default function CardsGrid({ cards }: Props): JSX.Element {
           readHref={c.readHref}
         />
       ))}
-    </div>
+    </motion.div>
   );
 }
 
