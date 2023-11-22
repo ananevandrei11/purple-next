@@ -1,0 +1,42 @@
+.comment {
+  display: grid;
+  grid-template-columns: auto 4px 1fr;
+  grid-template-areas:
+    'name dot email'
+    'text text text';
+  gap: 8px;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.name {
+  grid-area: name;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.dot {
+  grid-area: dot;
+}
+
+.email {
+  grid-area: email;
+}
+
+.text {
+  grid-area: text;
+}
+
+@media (max-width: 768px) {
+  .comment {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'name'
+      'email'
+      'text';
+  }
+
+  .dot {
+    display: none;
+  }
+}

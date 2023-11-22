@@ -1,0 +1,26 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.title {
+  text-transform: capitalize;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.article::first-letter {
+  text-transform: capitalize;
+}
+
+.like {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+}
