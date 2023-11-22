@@ -1,4 +1,8 @@
-import { DetailedHTMLProps, InputHTMLAttributes, forwardRef } from 'react';
+import {
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+  forwardRef,
+} from 'react';
 import styles from './Input.module.css';
 import clsx from 'clsx';
 import { FieldError } from 'react-hook-form';
@@ -15,8 +19,12 @@ export const Input = forwardRef<HTMLInputElement, IProps>(
   ({ className, ...props }, ref) => {
     return (
       <div>
-        <input ref={ref} className={clsx(className, styles.input)} {...props} />
-        {props.error && <p>{props.error.message}</p>}
+        <input
+          ref={ref}
+          className={clsx(className, styles.input)}
+          {...props}
+        />
+        {props.error && <p role="alert">{props.error.message}</p>}
       </div>
     );
   }

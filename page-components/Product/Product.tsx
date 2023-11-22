@@ -51,6 +51,7 @@ const Product = motion(
         behavior: 'smooth',
         block: 'start',
       });
+      reviewRef.current?.focus();
     };
 
     const variants = {
@@ -93,15 +94,27 @@ const Product = motion(
               {product?.price && (
                 <>
                   <div>
-                    {numberToStringDigit(product?.price)} &#8381;
-                    <Tag size="small" color="green">
+                    <span
+                      aria-label={`Price ${numberToStringDigit(
+                        product?.price
+                      )}`}
+                      className="visibility-hidden">
+                      Price {numberToStringDigit(product?.price)}
+                    </span>
+                    <span aria-hidden={true}>
+                      {numberToStringDigit(product?.price)} &#8381;
+                    </span>
+                    <Tag
+                      aria-hidden={true}
+                      size="small"
+                      color="green">
                       {numberToStringDigit(
                         product?.price - product?.oldPrice
                       )}{' '}
                       &#8381;
                     </Tag>
                   </div>
-                  <span>цена</span>
+                  <span aria-hidden={true}>цена</span>
                 </>
               )}
             </div>
@@ -171,7 +184,8 @@ const Product = motion(
               <Button
                 appearance="ghost"
                 arrow="right"
-                onClick={handleReviewOpen}>
+                onClick={handleReviewOpen}
+                aria-expanded={isReviewOpened}>
                 Читать отзывы
               </Button>
             )}
@@ -182,6 +196,7 @@ const Product = motion(
             variants={variants}
             animate={isReviewOpened ? 'visible' : 'hidden'}
             initial="hidden"
+            tabIndex={0}
             ref={reviewRef}
             color="blue"
             className={clsx(styles.review, {

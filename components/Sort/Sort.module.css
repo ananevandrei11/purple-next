@@ -25,3 +25,7 @@
   width: 20px;
   height: 13px;
 }
+
+.sortingLabel {
+  display: none;
+}

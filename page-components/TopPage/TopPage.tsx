@@ -1,4 +1,4 @@
-import { HTag, Input, Tag, Textarea } from '@/components';
+import { HTag, Tag } from '@/components';
 import {
   TopLevelCategory,
   TopPageModel,
@@ -11,9 +11,11 @@ import Sort, { SortEnum } from '@/components/Sort/Sort';
 import { useEffect, useReducer } from 'react';
 import { sortReducer } from './sort.reducer';
 import Product from '../Product/Product';
+import { useReducedMotion } from 'framer-motion';
 
 export const TopPage = ({ page, products }: Props): JSX.Element => {
   const { title } = page;
+  const shouldReduceMotion = useReducedMotion();
   const [{ products: sortProducts, sort }, dispatchSort] = useReducer(
     sortReducer,
     {
@@ -43,7 +45,11 @@ export const TopPage = ({ page, products }: Props): JSX.Element => {
 
       {sortProducts &&
         sortProducts.map((p) => (
-          <Product layout key={p._id} product={p} />
+          <Product
+            layout={shouldReduceMotion ? false : true}
+            key={p._id}
+            product={p}
+          />
         ))}
 
       {page.hh && (
@@ -57,9 +63,6 @@ export const TopPage = ({ page, products }: Props): JSX.Element => {
           <HHData data={page.hh} />
         </section>
       )}
-
-      <Input />
-      <Textarea />
 
       {page?.advantages && page?.advantages.length > 0 && (
         <Advantages advantages={page.advantages} />

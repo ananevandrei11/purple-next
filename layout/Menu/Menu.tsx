@@ -53,7 +53,9 @@ export const Menu = () => {
     return (
       <>
         {firstLevelMenu.map((first) => (
-          <li key={first.id}>
+          <li
+            key={first.id}
+            aria-expanded={first.id === firstCategory}>
             <Link
               href={`/${first.route}`}
               className={clsx(styles.firstLevel, {
@@ -98,7 +100,11 @@ export const Menu = () => {
                 initial={second.isOpened ? 'visible' : 'hidden'}
                 animate={second.isOpened ? 'visible' : 'hidden'}
                 className={clsx(styles.thirdMenu)}>
-                {buildThirdLevel(second.pages, menuActive.route)}
+                {buildThirdLevel(
+                  second.pages,
+                  menuActive.route,
+                  second.isOpened
+                )}
               </motion.ul>
             </li>
           );
@@ -106,7 +112,11 @@ export const Menu = () => {
       </ul>
     );
   };
-  const buildThirdLevel = (pages: PageItem[], route: string) => {
+  const buildThirdLevel = (
+    pages: PageItem[],
+    route: string,
+    isOpened: boolean = false
+  ) => {
     return (
       <>
         {pages.map((third) => (
@@ -117,7 +127,12 @@ export const Menu = () => {
               [styles.thirdLevelActive]:
                 `/${route}/${third.alias}` === router.asPath,
             })}>
-            <Link href={`/${route}/${third.alias}`}>
+            <Link
+              aria-current={
+                `/${route}/${third.alias}` === router.asPath
+              }
+              tabIndex={isOpened ? 0 : -1}
+              href={`/${route}/${third.alias}`}>
               {third.category}
             </Link>
           </motion.li>

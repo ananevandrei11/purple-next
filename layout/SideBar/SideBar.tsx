@@ -9,7 +9,7 @@ export const SideBar = ({ className, ...props }: SideBarProps) => (
   <aside className={clsx(styles.sidebar, className)} {...props}>
     <Logo />
     <Search />
-    <nav className={styles.nav}>
+    <nav role="navigation" className={styles.nav}>
       <Menu />
     </nav>
   </aside>

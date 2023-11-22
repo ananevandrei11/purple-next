@@ -51,7 +51,7 @@
   font-size: 12px;
   font-weight: 300;
   line-height: 16px;
-  color: #787d85;
+  color: #52555a;
   text-decoration: underline;
   text-transform: uppercase;
   cursor: pointer;
@@ -75,6 +75,7 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
+  outline-offset: -2px;
 }
 
 .thirdLevel:hover {

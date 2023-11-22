@@ -29,6 +29,8 @@ export const ReviewForm = ({ productId, className }: Props) => {
     register,
     control,
     handleSubmit,
+    clearErrors,
+    reset,
     formState: { errors },
   } = useForm<FormValues>();
   const onSubmit = async (formData: FormValues) => {
@@ -42,6 +44,7 @@ export const ReviewForm = ({ productId, className }: Props) => {
       );
       if (data.message) {
         setMessageRequest(data.message);
+        reset();
       }
       return true;
     } catch (err: unknown) {
@@ -54,6 +57,7 @@ export const ReviewForm = ({ productId, className }: Props) => {
 
   return (
     <form
+      tabIndex={0}
       onSubmit={handleSubmit(onSubmit)}
       className={clsx(styles.form, className)}>
       <Input
@@ -62,6 +66,7 @@ export const ReviewForm = ({ productId, className }: Props) => {
         })}
         error={errors.name}
         placeholder="Имя"
+        aria-invalid={!!errors.name}
       />
       <Input
         {...register('title', {
@@ -69,6 +74,7 @@ export const ReviewForm = ({ productId, className }: Props) => {
         })}
         error={errors.title}
         placeholder="Заголовок отзыва"
+        aria-invalid={!!errors.title}
       />
       <div className={styles.rating}>
         <span>Оценка</span>
@@ -100,12 +106,16 @@ export const ReviewForm = ({ productId, className }: Props) => {
             message: 'Min length - 20 letters',
           },
         })}
+        aria-label="Message for comment"
         error={errors.description}
         placeholder="Текст отзыва"
         className={styles.textarea}
       />
-      <div>
-        <Button appearance="primary" type="submit">
+      <div role="alert">
+        <Button
+          onClick={() => clearErrors()}
+          appearance="primary"
+          type="submit">
           Отправить
         </Button>
         <span>
@@ -122,6 +132,7 @@ export const ReviewForm = ({ productId, className }: Props) => {
         <Button
           type="button"
           appearance="ghost"
+          aria-label="close alert"
           onClick={() => {
             setMessageRequest(null);
           }}>
