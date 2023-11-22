@@ -1,8 +1,12 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import '@/styles/globals.css';
-import { useRouter } from 'next/router';
+import { Router, useRouter } from 'next/router';
 import { useEffect } from 'react';
+
+Router.events.on('routeChangeStart', (url: string) => {
+  console.log(url);
+});
 
 export default function App({
   Component,

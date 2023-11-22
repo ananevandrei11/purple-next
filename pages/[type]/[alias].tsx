@@ -16,12 +16,17 @@ import { firstLevelMenu } from '@/helpers/helpers';
 import { TopPage } from '@/page-components';
 import { API } from '@/helpers/api';
 import Head from 'next/head';
+import { Page404 } from '../404';
 
 function Alias({
   products,
   firstCategory,
   page,
 }: AliasProps): JSX.Element {
+  if (!products || !page) {
+    return <Page404 />;
+  }
+
   return (
     <>
       <Head>
@@ -63,7 +68,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
