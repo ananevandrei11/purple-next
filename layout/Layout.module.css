@@ -30,21 +30,21 @@
 
 .up {
   position: fixed;
-  bottom: 20px;
   right: 20px;
+  bottom: 20px;
   z-index: 100;
 }
 
 .skipLink {
   position: fixed;
-  height: 0;
   top: 10px;
   left: 20px;
   z-index: 100;
-  background-color: var(--primary);
-  color: var(--white);
-  border: none;
+  height: 0;
   overflow: hidden;
+  color: var(--white);
+  background-color: var(--primary);
+  border: none;
 }
 
 .skipLinkShow {

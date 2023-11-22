@@ -7,18 +7,17 @@
 .textarea {
   min-height: 106px;
   padding: 16px;
-  border-radius: 8px;
-  border: 1px solid rgba(40, 40, 40, 0.16);
-  background: var(--white);
-
   font-family: var(--ff);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  background: var(--white);
+  border: 1px solid rgb(40 40 40 / 16%);
+  border-radius: 8px;
   outline: none;
 }
 
 .textarea::placeholder {
-  color: rgba(78, 93, 124, 0.5);
+  color: rgb(78 93 124 / 50%);
 }

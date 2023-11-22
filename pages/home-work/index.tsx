@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Noto_Sans_KR } from 'next/font/google';
+// import { Noto_Sans_KR } from 'next/font/google';
 import { GetStaticProps } from 'next/types';
 
 import { CardsGrid } from '@/home-work-components';
@@ -9,12 +9,12 @@ import axios from 'axios';
 import { useHMContext } from '@/context/home-work';
 import { API_HM } from '@/helpers/apiHM';
 
-const notoSansKR = Noto_Sans_KR({
-  subsets: ['latin', 'cyrillic'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  preload: true,
-});
+// const notoSansKR = Noto_Sans_KR({
+//   subsets: ['latin', 'cyrillic'],
+//   weight: ['300', '400', '500', '600', '700'],
+//   display: 'swap',
+//   preload: true,
+// });
 
 function HomeWork({ posts, github }: HomeWorkProps): JSX.Element {
   const { setGitHub } = useHMContext();
@@ -24,7 +24,9 @@ function HomeWork({ posts, github }: HomeWorkProps): JSX.Element {
   });
 
   return (
-    <div className={`${notoSansKR.className}`}>
+    <div
+    // className={`${notoSansKR.className}`}
+    >
       <CardsGrid cards={posts} />
       <div>{posts.length}</div>
     </div>
@@ -33,7 +35,9 @@ function HomeWork({ posts, github }: HomeWorkProps): JSX.Element {
 
 export default withLayoutHM(HomeWork);
 
-export const getStaticProps: GetStaticProps<HomeWorkProps> = async () => {
+export const getStaticProps: GetStaticProps<
+  HomeWorkProps
+> = async () => {
   const { data: posts, status } = await axios.get<PostItem[]>(
     API_HM.posts + '?_limit=10'
   );
