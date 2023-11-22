@@ -61,8 +61,11 @@ export const Card = motion(
             <div className={styles.info}>
               <p className={styles.infoTheme}>{theme}</p>
               <span>&bull;</span>
-              <p>{publish}</p>
-              <button type="button" className={styles.like}>
+              <p aria-label={publish}>{publish}</p>
+              <button
+                aria-label={`like rating ${like}`}
+                type="button"
+                className={styles.like}>
                 <span>{like}</span>
                 <Like className={styles.likeIcon} />
               </button>
@@ -73,7 +76,11 @@ export const Card = motion(
             <Paragraph size="small">{text}</Paragraph>
           </article>
           <div className={styles.read}>
-            <p className={styles.readTime}>{readTimeMinutes}</p>
+            <p
+              aria-label={readTimeMinutes}
+              className={styles.readTime}>
+              {readTimeMinutes}
+            </p>
             <Link href={readHref} className={styles.readLink}>
               <span>{readLink}</span>
               <ArrowRight className={styles.readLinkIcon} />
