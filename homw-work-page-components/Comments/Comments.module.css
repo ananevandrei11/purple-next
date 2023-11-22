@@ -4,10 +4,10 @@
 
 .comment {
   display: grid;
-  grid-template-columns: auto 4px 1fr;
   grid-template-areas:
     'name dot email'
     'text text text';
+  grid-template-columns: auto 4px 1fr;
   gap: 8px;
   justify-content: flex-start;
   margin-bottom: 16px;
@@ -31,13 +31,13 @@
   grid-area: text;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .comment {
-    grid-template-columns: 1fr;
     grid-template-areas:
       'name'
       'email'
       'text';
+    grid-template-columns: 1fr;
   }
 
   .dot {

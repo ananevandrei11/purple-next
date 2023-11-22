@@ -21,6 +21,6 @@
   display: grid;
   grid-template-columns: auto auto;
   gap: 10px;
-  justify-content: flex-start;
   align-items: center;
+  justify-content: flex-start;
 }
