@@ -11,6 +11,7 @@ const nextConfig = {
   },
   images: {
     domains: ['courses-top.ru', 'cdn-bucket.hb.bizmrg.com'],
+    unoptimized: true,
   },
 };
 

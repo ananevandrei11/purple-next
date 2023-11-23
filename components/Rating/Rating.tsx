@@ -40,8 +40,31 @@ export const Rating = forwardRef(
       setRating(i);
     };
 
-    const onKeyChangeRating = (e: KeyboardEvent<HTMLElement>, i: number) => {
-      if (e.code !== 'Space') {
+    const onKeyChangeRating = (
+      e: KeyboardEvent<HTMLElement>,
+      i: number
+    ) => {
+      if (e.code === 'ArrowRight' || e.code === 'ArrowUp') {
+        e.preventDefault();
+        if (!rating) {
+          setRating?.(1);
+          return;
+        } else if (rating < 5) {
+          setRating?.(rating + 1);
+          return;
+        }
+      }
+      if (e.code === 'ArrowLeft' || e.code === 'ArrowDown') {
+        e.preventDefault();
+        if (!rating) {
+          setRating?.(0);
+          return;
+        } else if (rating >= 0) {
+          setRating?.(rating - 1);
+          return;
+        }
+      }
+      if (e.code !== 'Space' && e.code !== 'Enter') {
         return;
       }
       onChangeRating(i);
@@ -57,6 +80,13 @@ export const Rating = forwardRef(
               onMouseLeave={() => changeDisplay(rating)}
               onClick={() => onChangeRating(i + 1)}
               tabIndex={isEditable ? 0 : -1}
+              role={isEditable ? 'slider' : ''}
+              aria-label={
+                isEditable ? 'rating can be changed' : 'not editable'
+              }
+              aria-valuenow={rating}
+              aria-valuemax={5}
+              aria-valuemin={1}
               onKeyDown={(e: KeyboardEvent<HTMLElement>) =>
                 onKeyChangeRating(e, i + 1)
               }>
@@ -80,7 +110,10 @@ export const Rating = forwardRef(
     }, [rating]);
 
     return (
-      <div ref={ref} className={clsx(styles.rating, className)} {...props}>
+      <div
+        ref={ref}
+        className={clsx(styles.rating, className)}
+        {...props}>
         {ratingArray.map((r: JSX.Element, i: number) => (
           <span key={i} className={styles.wrapper}>
             {r}

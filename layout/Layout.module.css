@@ -30,9 +30,25 @@
 
 .up {
   position: fixed;
-  bottom: 20px;
   right: 20px;
+  bottom: 20px;
   z-index: 100;
+}
+
+.skipLink {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  z-index: 100;
+  height: 0;
+  overflow: hidden;
+  color: var(--white);
+  background-color: var(--primary);
+  border: none;
+}
+
+.skipLinkShow {
+  height: auto;
 }
 
 @media (0 < width < 768px) {

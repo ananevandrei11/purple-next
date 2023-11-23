@@ -21,21 +21,30 @@ export interface Props
 const Sort = ({ setSort, sort }: Props) => {
   return (
     <div className={styles.group}>
+      <span id="sorting" className={styles.sortingLabel}>
+        Sorting
+      </span>
       <button
+        id="rating"
         type="button"
         className={clsx(styles.btn, {
           [styles.active]: sort === SortEnum.Rating,
         })}
-        onClick={() => setSort(SortEnum.Rating)}>
+        onClick={() => setSort(SortEnum.Rating)}
+        aria-selected={sort === SortEnum.Rating}
+        aria-labelledby="sorting rating">
         <SortIcon className={styles.icon} />
         <span>По рейтингу</span>
       </button>
       <button
+        id="price"
         type="button"
         className={clsx(styles.btn, {
           [styles.active]: sort === SortEnum.Price,
         })}
-        onClick={() => setSort(SortEnum.Price)}>
+        onClick={() => setSort(SortEnum.Price)}
+        aria-selected={sort === SortEnum.Price}
+        aria-labelledby="sorting price">
         <SortIcon className={styles.icon} />
         <span>По цене</span>
       </button>

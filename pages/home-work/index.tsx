@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Noto_Sans_KR } from 'next/font/google';
+// import { Noto_Sans_KR } from 'next/font/google';
 import { GetStaticProps } from 'next/types';
 
 import { CardsGrid } from '@/home-work-components';
@@ -9,12 +9,12 @@ import axios from 'axios';
 import { useHMContext } from '@/context/home-work';
 import { API_HM } from '@/helpers/apiHM';
 
-const notoSansKR = Noto_Sans_KR({
-  subsets: ['latin', 'cyrillic'],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-  preload: true,
-});
+// const notoSansKR = Noto_Sans_KR({
+//   subsets: ['latin', 'cyrillic'],
+//   weight: ['300', '400', '500', '600', '700'],
+//   display: 'swap',
+//   preload: true,
+// });
 
 function HomeWork({ posts, github }: HomeWorkProps): JSX.Element {
   const { setGitHub } = useHMContext();

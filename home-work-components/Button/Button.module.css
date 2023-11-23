@@ -1,8 +1,8 @@
 .btn {
-  margin-top: 8px;
-  width: fit-content;
   display: inline-block;
+  width: fit-content;
   padding: 14px;
+  margin-top: 8px;
   font-size: 14px;
   text-align: center;
   cursor: pointer;
