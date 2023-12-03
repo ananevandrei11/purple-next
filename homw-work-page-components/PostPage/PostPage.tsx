@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import { PostComments, PostItem } from '@/interfaces/home-work/post.interface';
+import {
+  PostComments,
+  PostItem,
+} from '@/interfaces/home-work/post.interface';
 import PreviewCard from '@/public/PreviewCard.jpg';
 import styles from './PostPage.module.css';
 import { LikeBtn } from '@/home-work-components';
@@ -67,10 +70,16 @@ const PostPage = ({ post, comments }: Props) => {
 
       <div className={styles.like}>
         <span>Понравилось? Жми</span>
-        <LikeBtn active={activeLike} onClick={handleLike} />
+        <LikeBtn
+          aria-label="set like"
+          active={activeLike}
+          onClick={handleLike}
+        />
       </div>
 
-      {comments && comments.length > 0 && <Comments comments={comments} />}
+      {comments && comments.length > 0 && (
+        <Comments comments={comments} />
+      )}
       <FormReview />
     </div>
   );

@@ -12,6 +12,7 @@ const FormReview = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IFieldValues>();
 
@@ -21,8 +22,11 @@ const FormReview = () => {
         ...formData,
       });
       alert(data.message);
+      reset();
     } catch (e) {
-      console.error(e instanceof Error ? e.message : 'Something went wrong');
+      console.error(
+        e instanceof Error ? e.message : 'Something went wrong'
+      );
     }
   };
 
@@ -35,6 +39,7 @@ const FormReview = () => {
           required: { value: true, message: `Required name` },
         })}
         error={errors.name}
+        aria-invalid={!!errors.name}
       />
       <TextArea
         placeholder="Комментарий"
@@ -42,6 +47,7 @@ const FormReview = () => {
           required: { value: true, message: `Required comment` },
         })}
         error={errors.description}
+        aria-invalid={!!errors.description}
       />
       <Button appearance="black" className={styles.btn} type="submit">
         Отправить

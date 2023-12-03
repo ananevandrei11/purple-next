@@ -24,12 +24,7 @@ function HomeWork({ posts, github }: HomeWorkProps): JSX.Element {
   });
 
   return (
-    <div
-    // className={`${notoSansKR.className}`}
-    >
-      <CardsGrid cards={posts} />
-      <div>{posts.length}</div>
-    </div>
+    <CardsGrid cards={posts} className={`${notoSansKR.className}`} />
   );
 }
 
